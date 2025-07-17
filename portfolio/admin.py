@@ -361,40 +361,6 @@ class SiteSettingsAdmin(admin.ModelAdmin):
         return "Aucun favicon"
     favicon_preview.short_description = "Aperçu du favicon"
     
-@admin.register(ContactMessage)
-class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ['nom', 'email', 'sujet', 'lu', 'date_envoi']
-    list_filter = ['lu', 'date_envoi']
-    list_editable = ['lu']
-    search_fields = ['nom', 'email', 'sujet', 'message']
-    readonly_fields = ['date_envoi']
-    ordering = ['-date_envoi']
-    
-    fieldsets = (
-        ('Expéditeur', {
-            'fields': ('nom', 'email')
-        }),
-        ('Message', {
-            'fields': ('sujet', 'message', 'lu')
-        }),
-        ('Date', {
-            'fields': ('date_envoi',),
-            'classes': ('collapse',)
-        }),
-    )
-    
-    actions = ['marquer_lu', 'marquer_non_lu']
-    
-    def marquer_lu(self, request, queryset):
-        queryset.update(lu=True)
-        self.message_user(request, f"{queryset.count()} messages marqués comme lus.")
-    marquer_lu.short_description = "Marquer comme lu"
-    
-    def marquer_non_lu(self, request, queryset):
-        queryset.update(lu=False)
-        self.message_user(request, f"{queryset.count()} messages marqués comme non lus.")
-    marquer_non_lu.short_description = "Marquer comme non lu"
-
 
 # Configuration générale de l'admin
 admin.site.site_header = "Portfolio Admin"
