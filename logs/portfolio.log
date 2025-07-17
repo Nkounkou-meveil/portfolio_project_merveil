@@ -1,0 +1,449 @@
+INFO 2025-06-29 20:24:53,974 autoreload 3088 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:26:15,451 autoreload 3088 8609881856 /Users/noededieu/portfolio_project/portfolio_project/urls.py changed, reloading.
+INFO 2025-06-29 20:26:15,772 autoreload 3115 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:26:16,889 autoreload 3115 8609881856 /Users/noededieu/portfolio_project/portfolio_project/urls.py changed, reloading.
+INFO 2025-06-29 20:26:17,073 autoreload 3119 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:26:18,164 autoreload 3119 8609881856 /Users/noededieu/portfolio_project/portfolio_project/urls.py changed, reloading.
+INFO 2025-06-29 20:26:18,364 autoreload 3121 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:26:19,399 autoreload 3121 8609881856 /Users/noededieu/portfolio_project/portfolio_project/urls.py changed, reloading.
+INFO 2025-06-29 20:26:19,609 autoreload 3123 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:26:21,651 autoreload 3123 8609881856 /Users/noededieu/portfolio_project/portfolio_project/urls.py changed, reloading.
+INFO 2025-06-29 20:26:21,868 autoreload 3125 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:26:25,952 autoreload 3125 8609881856 /Users/noededieu/portfolio_project/portfolio_project/urls.py changed, reloading.
+INFO 2025-06-29 20:26:26,184 autoreload 3132 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:26:27,228 autoreload 3132 8609881856 /Users/noededieu/portfolio_project/portfolio_project/urls.py changed, reloading.
+INFO 2025-06-29 20:26:27,437 autoreload 3137 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:26:31,521 autoreload 3137 8609881856 /Users/noededieu/portfolio_project/portfolio_project/urls.py changed, reloading.
+INFO 2025-06-29 20:26:31,739 autoreload 3139 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:26:33,865 autoreload 3139 8609881856 /Users/noededieu/portfolio_project/portfolio_project/urls.py changed, reloading.
+INFO 2025-06-29 20:26:34,084 autoreload 3141 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:28:40,319 autoreload 3427 8609881856 Watching for file changes with StatReloader
+WARNING 2025-06-29 20:30:30,518 log 3427 6188822528 Not Found: /apple-touch-icon-precomposed.png
+WARNING 2025-06-29 20:30:30,518 log 3427 6256128000 Not Found: /apple-touch-icon.png
+WARNING 2025-06-29 20:30:30,518 log 3427 6272954368 Not Found: /favicon.ico
+WARNING 2025-06-29 20:30:51,119 log 3427 6340259840 Not Found: /apple-touch-icon-precomposed.png
+WARNING 2025-06-29 20:30:51,201 log 3427 6340259840 Not Found: /apple-touch-icon.png
+WARNING 2025-06-29 20:34:09,473 log 3427 6222475264 Not Found: /media/profile/profil.jpg
+WARNING 2025-06-29 20:34:09,483 log 3427 6222475264 Not Found: /media/profile/profil.jpg
+WARNING 2025-06-29 20:34:15,929 log 3427 6188822528 Not Found: /media/profile/profil.jpg
+WARNING 2025-06-29 20:34:20,781 log 3427 6188822528 Not Found: /media/profile/profil.jpg
+WARNING 2025-06-29 20:34:36,226 log 3427 6188822528 Not Found: /media/profile/profil.jpg
+WARNING 2025-06-29 20:34:36,252 log 3427 6188822528 Not Found: /media/profile/profil.jpg
+WARNING 2025-06-29 20:35:10,216 log 3427 6188822528 Not Found: /media/profile/profil_6ENxJzj.jpg
+WARNING 2025-06-29 20:35:10,239 log 3427 6188822528 Not Found: /media/profile/profil_6ENxJzj.jpg
+WARNING 2025-06-29 20:35:18,860 log 3427 6188822528 Not Found: /media/profile/profil_6ENxJzj.jpg
+ERROR 2025-06-29 20:36:13,616 log 3427 6188822528 Internal Server Error: /admin/portfolio/project/add/
+Traceback (most recent call last):
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/forms/forms.py", line 183, in __getitem__
+    field = self.fields[name]
+            ~~~~~~~~~~~^^^^^^
+KeyError: 'slug'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/admin/options.py", line 1984, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/admin/options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/admin/options.py", line 1924, in _changeform_view
+    admin_form = helpers.AdminForm(
+        form,
+    ...<8 lines>...
+        model_admin=self,
+    )
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/admin/helpers.py", line 51, in __init__
+    {"field": form[field_name], "dependencies": [form[f] for f in dependencies]}
+              ~~~~^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/forms/forms.py", line 185, in __getitem__
+    raise KeyError(
+    ...<6 lines>...
+    )
+KeyError: "Key 'slug' not found in 'ProjectForm'. Choices are: description_courte, description_detaillee, featured, image, ordre_affichage, statut, technologies, titre, url_demo, url_github."
+INFO 2025-06-29 20:37:59,370 autoreload 3427 8609881856 /Users/noededieu/portfolio_project/portfolio/admin.py changed, reloading.
+INFO 2025-06-29 20:37:59,693 autoreload 3509 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:38:15,002 autoreload 3509 8609881856 /Users/noededieu/portfolio_project/portfolio/models.py changed, reloading.
+INFO 2025-06-29 20:38:15,293 autoreload 3517 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:38:36,675 autoreload 3517 8609881856 /Users/noededieu/portfolio_project/portfolio/models.py changed, reloading.
+INFO 2025-06-29 20:38:36,980 autoreload 3524 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:38:55,342 autoreload 3524 8609881856 /Users/noededieu/portfolio_project/portfolio/models.py changed, reloading.
+INFO 2025-06-29 20:38:55,638 autoreload 3529 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:41:15,509 autoreload 4006 8609881856 Watching for file changes with StatReloader
+WARNING 2025-06-29 20:43:28,016 log 4006 6155186176 Not Found: /media/projects/logo_ss.png
+ERROR 2025-06-29 20:43:32,169 views 4006 6155186176 Erreur dans la vue index: Reverse for 'projet_detail' not found. 'projet_detail' is not a valid view function or pattern name.
+ERROR 2025-06-29 20:43:47,595 views 4006 6155186176 Erreur dans la vue index: Reverse for 'projet_detail' not found. 'projet_detail' is not a valid view function or pattern name.
+INFO 2025-06-29 20:44:26,778 autoreload 4006 8609881856 /Users/noededieu/portfolio_project/portfolio/models.py changed, reloading.
+INFO 2025-06-29 20:44:27,094 autoreload 4029 8609881856 Watching for file changes with StatReloader
+ERROR 2025-06-29 20:44:31,121 views 4029 6171783168 Erreur dans la vue index: Reverse for 'projet_detail' not found. 'projet_detail' is not a valid view function or pattern name.
+WARNING 2025-06-29 20:44:37,632 log 4029 6188609536 Not Found: /media/profile/profil_6ENxJzj.jpg
+WARNING 2025-06-29 20:44:37,647 log 4029 6188609536 Not Found: /media/profile/profil_6ENxJzj.jpg
+WARNING 2025-06-29 20:44:45,096 log 4029 6188609536 Not Found: /media/projects/logo_ss.png
+WARNING 2025-06-29 20:44:45,116 log 4029 6188609536 Not Found: /media/projects/logo_ss.png
+WARNING 2025-06-29 20:44:48,230 log 4029 6188609536 Not Found: /media/profile/profil_6ENxJzj.jpg
+WARNING 2025-06-29 20:44:51,176 log 4029 6205435904 Not Found: /media/profile/profil_6ENxJzj.jpg
+WARNING 2025-06-29 20:44:51,194 log 4029 6171783168 Not Found: /media/profile/profil_6ENxJzj.jpg
+ERROR 2025-06-29 20:47:16,546 views 4029 6171783168 Erreur dans la vue index: Reverse for 'projet_detail' not found. 'projet_detail' is not a valid view function or pattern name.
+ERROR 2025-06-29 20:47:21,783 views 4029 6171783168 Erreur dans la vue index: Reverse for 'projet_detail' not found. 'projet_detail' is not a valid view function or pattern name.
+ERROR 2025-06-29 20:47:23,229 views 4029 6171783168 Erreur dans la vue index: Reverse for 'projet_detail' not found. 'projet_detail' is not a valid view function or pattern name.
+INFO 2025-06-29 20:49:39,851 autoreload 4029 8609881856 /Users/noededieu/portfolio_project/portfolio/models.py changed, reloading.
+INFO 2025-06-29 20:49:40,185 autoreload 4086 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:50:11,765 autoreload 4086 8609881856 /Users/noededieu/portfolio_project/portfolio_project/settings.py changed, reloading.
+INFO 2025-06-29 20:50:51,973 autoreload 4201 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:51:37,693 autoreload 4201 8609881856 /Users/noededieu/portfolio_project/portfolio/views.py changed, reloading.
+INFO 2025-06-29 20:51:38,010 autoreload 4234 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:51:40,134 autoreload 4234 8609881856 /Users/noededieu/portfolio_project/portfolio/views.py changed, reloading.
+INFO 2025-06-29 20:51:40,359 autoreload 4239 8609881856 Watching for file changes with StatReloader
+ERROR 2025-06-29 20:52:08,805 log 4239 6202699776 Internal Server Error: /projet/das/
+Traceback (most recent call last):
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/noededieu/portfolio_project/portfolio/views.py", line 70, in projet_detail
+    return render(request, 'portfolio/projet_detail.html', context)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 84: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-06-29 20:52:17,511 log 4239 6202699776 Internal Server Error: /projet/das/
+Traceback (most recent call last):
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/noededieu/portfolio_project/portfolio/views.py", line 70, in projet_detail
+    return render(request, 'portfolio/projet_detail.html', context)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/template/base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 84: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+INFO 2025-06-29 20:55:36,941 autoreload 4239 8609881856 /Users/noededieu/portfolio_project/portfolio/admin.py changed, reloading.
+INFO 2025-06-29 20:55:37,293 autoreload 4329 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 20:55:38,410 autoreload 4329 8609881856 /Users/noededieu/portfolio_project/portfolio/admin.py changed, reloading.
+INFO 2025-06-29 20:55:38,611 autoreload 4332 8609881856 Watching for file changes with StatReloader
+INFO 2025-06-29 21:12:04,077 views 4332 6205435904 Nouvel abonnement newsletter: marland@gmail.com
+WARNING 2025-06-29 21:12:30,954 log 4332 6222262272 Not Found: /apple-touch-icon-precomposed.png
+WARNING 2025-06-29 21:12:30,954 log 4332 6239088640 Not Found: /apple-touch-icon.png
+WARNING 2025-06-29 21:12:30,954 log 4332 6255915008 Not Found: /favicon.ico
+WARNING 2025-06-29 21:12:40,931 log 4332 6205435904 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-29 21:13:21,914 log 4332 6205435904 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-29 21:13:31,593 log 4332 6205435904 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-29 21:16:09,469 log 4332 6222262272 Not Found: /media/projet1.jpeg
+WARNING 2025-06-29 21:16:09,499 log 4332 6222262272 Not Found: /media/projet1.jpeg
+WARNING 2025-06-29 21:20:33,013 log 4332 6239088640 Not Found: /media/yde.jpeg
+WARNING 2025-06-29 21:20:33,035 log 4332 6239088640 Not Found: /media/yde.jpeg
+WARNING 2025-06-29 21:23:42,061 log 4332 6255915008 Not Found: /media/fcrm1.jpg
+WARNING 2025-06-29 21:23:42,084 log 4332 6255915008 Not Found: /media/fcrm1.jpg
+WARNING 2025-06-29 21:23:51,790 log 4332 6272741376 Not Found: /apple-touch-icon-precomposed.png
+WARNING 2025-06-29 21:23:51,795 log 4332 6306394112 Not Found: /favicon.ico
+WARNING 2025-06-29 21:23:51,799 log 4332 6289567744 Not Found: /apple-touch-icon.png
+INFO 2025-06-29 21:26:08,677 views 4332 6306394112 Nouvel abonnement newsletter: jesus@gmail.com
+WARNING 2025-06-29 21:29:34,026 log 4332 6255915008 Not Found: /apple-touch-icon-precomposed.png
+WARNING 2025-06-29 21:29:34,031 log 4332 6289567744 Not Found: /favicon.ico
+WARNING 2025-06-29 21:29:34,035 log 4332 6272741376 Not Found: /apple-touch-icon.png
+WARNING 2025-06-29 21:30:02,390 log 4332 6306394112 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-06-29 21:31:27,408 views 4332 6424178688 Nouvel abonnement newsletter: marie@gmail.com
+INFO 2025-06-30 13:33:20,949 autoreload 2368 8715558656 Watching for file changes with StatReloader
+WARNING 2025-06-30 13:34:51,738 log 2368 6184153088 Not Found: /apple-touch-icon.png
+WARNING 2025-06-30 13:34:51,738 log 2368 6200979456 Not Found: /favicon.ico
+WARNING 2025-06-30 13:34:51,739 log 2368 6167326720 Not Found: /apple-touch-icon-precomposed.png
+ERROR 2025-06-30 14:26:28,849 views 5824 6112653312 Erreur dans la vue index: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+ERROR 2025-06-30 14:26:40,821 views 5824 6112653312 Erreur dans la vue index: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+ERROR 2025-06-30 14:40:09,989 views 6044 6112653312 Erreur dans la vue index: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+ERROR 2025-06-30 14:40:17,072 views 6044 6112653312 Erreur dans la vue index: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+ERROR 2025-06-30 14:40:18,031 views 6044 6112653312 Erreur dans la vue index: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+ERROR 2025-06-30 14:40:18,256 views 6044 6112653312 Erreur dans la vue index: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+ERROR 2025-06-30 14:40:25,649 views 6044 6112653312 Erreur dans la vue index: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+ERROR 2025-06-30 14:40:35,934 views 6044 6112653312 Erreur dans la vue index: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+ERROR 2025-06-30 16:07:31,370 views 6044 6112653312 Erreur dans la vue index: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+WARNING 2025-06-30 16:07:31,591 log 6044 6130053120 Not Found: /static/img/favicon.ico
+ERROR 2025-06-30 16:47:33,259 log 6044 6130053120 Internal Server Error: /admin/portfolio/profile/
+Traceback (most recent call last):
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/sessions/backends/base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/backends/base/base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/backends/postgresql/base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/asgiref/sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+        request, *callback_args, **callback_kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/asgiref/sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/asgiref/sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/admin/sites.py", line 234, in inner
+    if not self.has_permission(request):
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/admin/sites.py", line 207, in has_permission
+    return request.user.is_active and request.user.is_staff
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/auth/__init__.py", line 304, in get_user
+    user_id = _get_user_session_key(request)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/auth/__init__.py", line 95, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/sessions/backends/base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/sessions/backends/base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/sessions/backends/db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/contrib/sessions/backends/db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 1621, in execute_sql
+    cursor = self.connection.cursor()
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/backends/base/base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/backends/base/base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/backends/base/base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/backends/base/base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/django/db/backends/postgresql/base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "/Users/noededieu/portfolio_env/lib/python3.13/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "postgres" does not exist
+
+INFO 2025-07-05 11:07:44,530 autoreload 13198 8635703040 Watching for file changes with StatReloader
+WARNING 2025-07-05 11:09:12,957 log 13198 6172930048 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-05 11:09:16,360 log 13198 6156103680 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-05 11:09:59,677 log 13198 6223409152 Not Found: /favicon.ico
+WARNING 2025-07-05 11:19:33,930 log 13198 6206582784 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-05 11:19:46,358 log 13198 6189756416 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-05 11:22:22,708 log 13198 6156103680 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-05 11:22:41,503 log 13198 6172930048 Not Found: /.well-known/appspecific/com.chrome.devtools.json

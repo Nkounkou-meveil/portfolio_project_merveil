@@ -1,0 +1,181 @@
+<!-- templates/portfolio/galerie_detail.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ galerie_item.titre }} | {{ profile.nom_complet }}{% endblock %}
+
+{% block description %}{{ galerie_item.description_courte }}{% endblock %}
+
+{% block og_title %}{{ galerie_item.titre }} | Galerie{% endblock %}
+{% block og_description %}{{ galerie_item.description_courte }}{% endblock %}
+{% block og_image %}{{ galerie_item.image.url }}{% endblock %}
+
+{% block content %}
+    <!-- Breadcrumb -->
+    <nav class="bg-gray-100 dark:bg-gray-800 py-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <ol class="flex items-center space-x-2 text-sm">
+                <li><a href="{% url 'portfolio:index' %}" class="text-pink-500 hover:text-pink-700">Accueil</a></li>
+                <li><i class="fas fa-chevron-right text-gray-400 mx-2"></i></li>
+                <li><a href="{% url 'portfolio:index' %}#galerie" class="text-pink-500 hover:text-pink-700">Galerie</a></li>
+                <li><i class="fas fa-chevron-right text-gray-400 mx-2"></i></li>
+                <li class="text-gray-600 dark:text-gray-300">{{ galerie_item.titre }}</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Gallery Hero Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center animate-fade-in-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">{{ galerie_item.titre }}</h1>
+                <p class="text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
+                    {{ galerie_item.description_courte }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Content -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <!-- Gallery Image -->
+                    <div class="mb-8">
+                        <img src="{{ galerie_item.image.url }}" alt="{{ galerie_item.titre }}" 
+                             class="w-full h-96 object-cover rounded-2xl shadow-lg">
+                    </div>
+                    
+                    <!-- Gallery Description -->
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Détails</h2>
+                        <div class="prose prose-lg max-w-none text-gray-600 dark:text-gray-300">
+                            {{ galerie_item.contenu_detaille|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <!-- Gallery Info -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Informations</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Date de publication</span>
+                                <p class="mt-1 text-gray-900 dark:text-white">{{ galerie_item.created_at|date:"d F Y" }}</p>
+                            </div>
+                            
+                            <div>
+                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Catégorie</span>
+                                <p class="mt-1 text-gray-900 dark:text-white">Galerie Sociale</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Share Section -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-6">
+                        <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Partager</h3>
+                        <div class="flex space-x-3">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" 
+                               target="_blank"
+                               class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ galerie_item.titre }}" 
+                               target="_blank"
+                               class="bg-blue-400 text-white p-3 rounded-lg hover:bg-blue-500 transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" 
+                               target="_blank"
+                               class="bg-blue-700 text-white p-3 rounded-lg hover:bg-blue-800 transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <button onclick="copyToClipboard('{{ request.build_absolute_uri }}')"
+                                    class="bg-gray-600 text-white p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Gallery Items -->
+    {% if galerie_similaire %}
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Plus de la galerie</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for item in galerie_similaire %}
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover-lift overflow-hidden">
+                    <div class="relative">
+                        <img src="{{ item.image.url }}" alt="{{ item.titre }}" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">{{ item.titre }}</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">{{ item.description_courte|truncatewords:15 }}</p>
+                        <a href="{{ item.get_absolute_url }}" class="inline-flex items-center text-pink-500 hover:text-pink-700 font-medium transition-colors">
+                            Voir plus <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Back to gallery -->
+    <section class="py-8 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <a href="{% url 'portfolio:index' %}#galerie" 
+               class="inline-flex items-center bg-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-600 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Retour à la galerie
+            </a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            showAlert('Lien copié dans le presse-papiers !', 'success');
+        }, function(err) {
+            showAlert('Erreur lors de la copie du lien', 'error');
+        });
+    }
+
+    // Animation d'entrée au scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observer les cartes de galerie similaire
+    document.querySelectorAll('.hover-lift').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+        observer.observe(card);
+    });
+</script>
+{% endblock %}

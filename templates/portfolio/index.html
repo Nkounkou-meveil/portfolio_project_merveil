@@ -1,0 +1,542 @@
+<!-- templates/portfolio/index.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ profile.nom_complet }} | Portfolio{% endblock %}
+
+{% block description %}Portfolio de {{ profile.nom_complet }} - {{ profile.titre_professionnel }}. {{ profile.bio|truncatewords:20 }}{% endblock %}
+
+{% block content %}
+    <!-- About Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white" id="about">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Qui suis-je ?</h2>
+                <div class="max-w-4xl mx-auto bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
+                    {% if profile %}
+                    <p class="text-lg md:text-xl leading-relaxed">
+                        {{ profile.bio|safe }}
+                    </p>
+                    {% else %}
+                    <p class="text-lg md:text-xl leading-relaxed">
+                        Je suis <strong>Marland Nicème Issangou</strong>, ingénieur en technologies digitales et entrepreneur
+                        du Congo-Brazzaville. Je conçois et implémente des solutions innovantes pour promouvoir l'inclusion
+                        digitale et le développement durable en Afrique.
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Projects Section -->
+    <section class="py-16 bg-white" id="projets">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Projets Récents</h2>
+            
+            <!-- Mobile scroll hint -->
+            <div class="flex items-center justify-center mb-6 text-gray-500 md:hidden">
+                <span class="text-sm">Faites défiler</span>
+                <i class="fas fa-arrow-right ml-2 animate-slide-right"></i>
+            </div>
+
+            <!-- Projects Slider -->
+            <div class="swiper projectsSwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    {% for projet in projects %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg hover-lift overflow-hidden h-full">
+                            <div class="relative">
+                                <img src="{{ projet.image.url }}" alt="{{ projet.titre }}" class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4">
+                                    <span class="{{ projet.status_color }} text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        {{ projet.get_statut_display }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3 text-gray-900">{{ projet.titre }}</h3>
+                                <p class="text-gray-600 mb-4">{{ projet.description_courte }}</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    {% for tech in projet.technologies %}
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                                <a href="{{ projet.get_absolute_url }}" class="inline-flex items-center text-pink-500 hover:text-pink-700 font-medium transition-colors">
+                                    Voir le projet <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                            <i class="fas fa-project-diagram text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucun projet à afficher pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination mt-8"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-16 bg-gray-50" id="skills">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+                <i class="fas fa-star text-pink-500 bounce-icon mr-3"></i>
+                Mes Compétences
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                {% for skill in skills %}
+                <div class="relative">
+                    <button class="skill-btn w-full bg-white hover:bg-pink-50 border-2 border-pink-200 hover:border-pink-500 rounded-2xl p-6 text-center transition-all duration-300 hover-lift" 
+                            onclick="toggleSkill('skill{{ skill.id }}', this)">
+                        <i class="{{ skill.icone_class }} text-pink-500 text-3xl mb-3 block"></i>
+                        <h3 class="font-semibold text-gray-900 text-sm">{{ skill.nom_competence }}</h3>
+                        <i class="fas fa-chevron-down text-pink-500 text-sm mt-2 transition-transform duration-300" id="arrow-skill{{ skill.id }}"></i>
+                    </button>
+                    <div id="skill{{ skill.id }}" class="skill-tooltip bg-white border-2 border-pink-200 rounded-xl p-4 shadow-lg">
+                        <div class="flex items-start space-x-3">
+                            <i class="{{ skill.icone_class }} text-pink-500 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-2">{{ skill.nom_competence }}</h4>
+                                <p class="text-sm text-gray-600">{{ skill.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-span-full text-center py-8">
+                    <i class="fas fa-tools text-4xl text-gray-400 mb-4"></i>
+                    <p class="text-gray-600">Aucune compétence à afficher pour le moment.</p>
+                </div>
+                {% endfor %}
+
+            </div>
+            
+            <!-- Info text -->
+            <div class="text-center mt-8">
+                <p class="text-gray-600 text-sm">
+                    <i class="fas fa-info-circle text-pink-500 mr-2"></i>
+                    Cliquez sur une compétence pour voir les détails
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-16 bg-white" id="news">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Fil d'Actualités</h2>
+            
+            <!-- Mobile scroll hint -->
+            <div class="flex items-center justify-center mb-6 text-gray-500 md:hidden">
+                <span class="text-sm">Faites défiler</span>
+                <i class="fas fa-arrow-right ml-2 animate-slide-right"></i>
+            </div>
+
+            <!-- News Slider -->
+            <div class="swiper newsSwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    {% for actualite in news %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg hover-lift overflow-hidden border border-gray-100 h-full">
+                            <div class="relative">
+                                <img src="{{ actualite.image.url }}" alt="{{ actualite.titre }}" class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4">
+                                    <span class="{{ actualite.plateforme_color }} text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        {{ actualite.get_plateforme_display }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3 text-gray-900">{{ actualite.titre }}</h3>
+                                <p class="text-gray-600 mb-4">{{ actualite.description|truncatewords:20 }}</p>
+                                <a href="{{ actualite.lien_externe }}" target="_blank" class="inline-flex items-center {{ actualite.plateforme_color }} text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity w-full justify-center">
+                                    <i class="fab fa-{{ actualite.plateforme }} mr-2"></i>
+                                    Voir sur {{ actualite.get_plateforme_display }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                            <i class="fas fa-newspaper text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucune actualité à afficher pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination mt-8"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Gallery Section -->
+    <section class="py-16 bg-gray-50" id="galerie">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Galerie Sociale</h2>
+            
+            <!-- Mobile scroll hint -->
+            <div class="flex items-center justify-center mb-6 text-gray-500 md:hidden">
+                <span class="text-sm">Faites défiler</span>
+                <i class="fas fa-arrow-right ml-2 animate-slide-right"></i>
+            </div>
+
+            <!-- Gallery Slider -->
+            <div class="swiper gallerySwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    {% for item in gallery %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg hover-lift overflow-hidden h-full">
+                            <div class="relative">
+                                <img src="{{ item.image.url }}" alt="{{ item.titre }}" class="w-full h-48 object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3 text-gray-900">{{ item.titre }}</h3>
+                                <p class="text-gray-600 mb-4">{{ item.description_courte|truncatewords:15 }}</p>
+                                <a href="{{ item.get_absolute_url }}" class="inline-flex items-center text-pink-500 hover:text-pink-700 font-medium transition-colors">
+                                    Voir plus <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                            <i class="fas fa-images text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucun élément dans la galerie pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination mt-8"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feed Section -->
+    <section class="py-16 bg-white" id="feed">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Feed</h2>
+            
+            <!-- Mobile scroll hint -->
+            <div class="flex items-center justify-center mb-6 text-gray-500 md:hidden">
+                <span class="text-sm">Faites défiler</span>
+                <i class="fas fa-arrow-right ml-2 animate-slide-right"></i>
+            </div>
+
+            <!-- Feed Slider -->
+            <div class="swiper feedSwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    {% for item in feed %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg hover-lift overflow-hidden">
+                            <img src="{{ item.image.url }}" alt="{{ item.alt_text }}" class="w-full h-64 object-cover">
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                            <i class="fas fa-rss text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucun contenu dans le feed pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination mt-8"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-16 bg-gray-50" id="partners">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Partenaires</h2>
+            
+            <!-- Partners Slider -->
+            <div class="swiper partnersSwiper overflow-hidden">
+                <div class="swiper-wrapper items-center">
+                    {% for partner in partners %}
+                    <div class="swiper-slide">
+                        <div class="text-center">
+                            {% if partner.url_site %}
+                            <a href="{{ partner.url_site }}" target="_blank" class="block">
+                            {% endif %}
+                                <img src="{{ partner.logo.url }}" 
+                                     alt="{{ partner.nom_partenaire }}" 
+                                     class="h-16 md:h-20 w-auto object-contain mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                            {% if partner.url_site %}
+                            </a>
+                            {% endif %}
+                            <p class="text-sm text-gray-600 mt-2">{{ partner.nom_partenaire }}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="text-center py-8">
+                            <i class="fas fa-handshake text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucun partenaire à afficher pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Skills toggle functionality
+    let openSkills = new Set();
+
+    function toggleSkill(skillId, buttonElement) {
+        const tooltip = document.getElementById(skillId);
+        const arrow = document.getElementById('arrow-' + skillId);
+        
+        if (openSkills.has(skillId)) {
+            // Fermer la compétence
+            tooltip.classList.remove('show', 'fade-in');
+            buttonElement.classList.remove('active');
+            arrow.style.transform = 'rotate(0deg)';
+            openSkills.delete(skillId);
+        } else {
+            // Ouvrir la compétence
+            tooltip.classList.add('show', 'fade-in');
+            buttonElement.classList.add('active');
+            arrow.style.transform = 'rotate(180deg)';
+            openSkills.add(skillId);
+            
+            // Scroll doux vers la compétence ouverte
+            setTimeout(() => {
+                tooltip.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }, 300);
+        }
+    }
+
+    // Fermer toutes les compétences si on clique en dehors
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.relative')) {
+            closeAllSkills();
+        }
+    });
+
+    function closeAllSkills() {
+        openSkills.forEach(skillId => {
+            const tooltip = document.getElementById(skillId);
+            const arrow = document.getElementById('arrow-' + skillId);
+            const button = tooltip.previousElementSibling;
+            
+            tooltip.classList.remove('show', 'fade-in');
+            button.classList.remove('active');
+            arrow.style.transform = 'rotate(0deg)';
+        });
+        openSkills.clear();
+    }
+
+    // Initialize Swiper sliders
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Projects Slider
+        const projectsSwiper = new Swiper('.projectsSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        // News Slider
+        const newsSwiper = new Swiper('.newsSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        // Gallery Slider
+        const gallerySwiper = new Swiper('.gallerySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        // Feed Slider
+        const feedSwiper = new Swiper('.feedSwiper', {
+            slidesPerView: 2,
+            spaceBetween: 15,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        // Partners Slider
+        const partnersSwiper = new Swiper('.partnersSwiper', {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 50,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 60,
+                },
+            },
+        });
+
+        // Animation d'entrée au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les boutons de compétences
+        document.querySelectorAll('.skill-btn').forEach((btn, index) => {
+            btn.style.opacity = '0';
+            btn.style.transform = 'translateY(20px)';
+            btn.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(btn);
+        });
+    });
+</script>
+{% endblock %}

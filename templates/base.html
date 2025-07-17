@@ -1,0 +1,898 @@
+<!-- templates/portfolio/index.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ profile.nom_complet }} | Portfolio{% endblock %}
+
+{% block description %}Portfolio de {{ profile.nom_complet }} - {{ profile.titre_professionnel }}. {{ profile.bio|truncatewords:20 }}{% endblock %}
+
+<<<<<<< HEAD
+        /* Header en mode sombre */
+        body.dark #header {
+            background-color: #1f2937;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark #header h1 {
+            color: #f3f4f6;
+        }
+
+        body.dark #header p {
+            color: #9ca3af;
+        }
+
+        body.dark #header nav a {
+            color: #d1d5db;
+        }
+
+        body.dark #header nav a:hover {
+            color: #ec4899;
+        }
+
+        /* Sections en mode sombre */
+        body.dark section {
+            transition: background-color 0.3s ease;
+        }
+
+        /* Cards en mode sombre */
+        body.dark .bg-white {
+            background-color: #374151 !important;
+            border-color: #4b5563;
+        }
+
+        body.dark .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Textes en mode sombre */
+        body.dark .text-gray-900 {
+            color: #f3f4f6 !important;
+        }
+
+        body.dark .text-gray-600 {
+            color: #9ca3af !important;
+        }
+
+        body.dark .text-gray-500 {
+            color: #6b7280 !important;
+        }
+
+        /* Boutons de compétences en mode sombre */
+        body.dark .skill-btn {
+            background-color: #374151;
+            border-color: #4b5563;
+            color: #f3f4f6;
+        }
+
+        body.dark .skill-btn:hover {
+            background-color: #4b5563;
+            border-color: #ec4899;
+        }
+
+        body.dark .skill-btn h3 {
+            color: #f3f4f6;
+        }
+
+        /* Tooltips en mode sombre */
+        body.dark .skill-tooltip {
+            background-color: #374151;
+            border-color: #4b5563;
+        }
+
+        body.dark .skill-tooltip h4 {
+            color: #f3f4f6;
+        }
+
+        body.dark .skill-tooltip p {
+            color: #d1d5db;
+        }
+
+        /* Toggle switch en mode sombre */
+        body.dark .toggle-switch {
+            background-color: #4b5563;
+        }
+
+        body.dark .toggle-switch.active {
+            background-color: #ec4899;
+        }
+
+        /* Scrollbar en mode sombre */
+        body.dark ::-webkit-scrollbar-track {
+            background: #374151;
+        }
+
+        body.dark ::-webkit-scrollbar-thumb {
+            background: #ec4899;
+        }
+
+        /* Gradients adaptés pour le mode sombre */
+        body.dark .gradient-bg {
+            background: linear-gradient(135deg, #4338ca 0%, #7c3aed 100%);
+        }
+
+        /* Amélioration des hover effects en mode sombre */
+        body.dark .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* États actifs des compétences en mode sombre */
+        body.dark .skill-btn.active {
+            background: linear-gradient(135deg, #ec4899, #f97316);
+            color: white;
+            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4);
+        }
+
+        /* Images en mode sombre */
+        body.dark img:not(.no-dark-filter) {
+            filter: brightness(0.9);
+        }
+
+        /* Partenaires en mode sombre */
+        body.dark #partners img {
+            filter: brightness(0.8) grayscale(1);
+        }
+
+        body.dark #partners img:hover {
+            filter: brightness(1) grayscale(0);
+        }
+
+        /* Amélioration des borders en mode sombre */
+        body.dark .border-gray-100 {
+            border-color: #4b5563 !important;
+        }
+
+        body.dark .border-gray-200 {
+            border-color: #6b7280 !important;
+        }
+
+        /* Input et boutons du footer en mode sombre */
+        body.dark footer input {
+            background-color: #374151;
+            border-color: #4b5563;
+            color: #f3f4f6;
+        }
+
+        body.dark footer input::placeholder {
+            color: #9ca3af;
+        }
+
+        /* Animation pour les changements de thème */
+        @keyframes themeTransition {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        body.dark,
+        body:not(.dark) {
+            animation: themeTransition 0.3s ease-in-out;
+        }
+
+        /* Alerts styles */
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            max-width: 400px;
+        }
+
+        .alert.show {
+            transform: translateX(0);
+        }
+
+        .alert-success {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .alert-error {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .alert-warning {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .alert-info {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Newsletter form responsive */
+        @media (max-width: 640px) {
+            #newsletterForm {
+                max-width: 100%;
+            }
+            
+            #newsletterEmail {
+                min-width: 0;
+                width: 100%;
+            }
+            
+            #newsletterBtn {
+                width: 100%;
+                text-align: center;
+                min-width: auto;
+            }
+        }
+
+        /* Social links responsive */
+        @media (max-width: 480px) {
+            .social-links {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            
+            .social-links a {
+                flex: 0 0 auto;
+            }
+        }
+        
+        {% block extra_css %}{% endblock %}
+    </style>
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-50 text-gray-900 transition-all duration-300" id="body">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50 transition-all duration-300" id="header">
+        <div class="max-w-7xl mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <!-- Profile Section -->
+                <div class="flex items-center space-x-6">
+=======
+{% block content %}
+    <!-- About Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white" id="about">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8">Qui suis-je ?</h2>
+                <div class="max-w-4xl mx-auto bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl">
+>>>>>>> 988e720 (Initial commit)
+                    {% if profile %}
+                    <div class="text-lg md:text-xl leading-relaxed text-justify">
+                        {{ profile.bio|safe }}
+                    </div>
+                    {% else %}
+                    <p class="text-lg md:text-xl leading-relaxed text-justify">
+                        Je suis <strong>Marland Nicème Issangou</strong>, ingénieur en technologies digitales et entrepreneur
+                        du Congo-Brazzaville. Je conçois et implémente des solutions innovantes pour promouvoir l'inclusion
+                        digitale et le développement durable en Afrique.
+                    </p>
+                    {% endif %}
+                </div>ed">
+                        {{ profile.bio|safe }}
+                    </p>
+                    {% else %}
+                    <p class="text-lg md:text-xl leading-relaxed">
+                        Je suis <strong>Marland Nicème Issangou</strong>, ingénieur en technologies digitales et entrepreneur
+                        du Congo-Brazzaville. Je conçois et implémente des solutions innovantes pour promouvoir l'inclusion
+                        digitale et le développement durable en Afrique.
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Projects Section -->
+    <section class="py-16 bg-white" id="projets">
+        <div class="max-w-7xl mx-auto px-4">
+<<<<<<< HEAD
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">Contact & Newsletter</h2>
+                <div class="max-w-md mx-auto">
+                    <form id="newsletterForm" class="flex flex-col sm:flex-row gap-3 sm:gap-0">
+                        <input type="email" id="newsletterEmail" placeholder="Votre email pour la newsletter" 
+                               class="flex-1 px-4 py-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                               required>
+                        <button type="submit" id="newsletterBtn" class="bg-pink-500 hover:bg-pink-600 px-6 py-3 rounded-lg sm:rounded-l-none sm:rounded-r-lg font-semibold transition-colors whitespace-nowrap">
+                            S'abonner
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-links flex flex-wrap justify-center gap-4 mb-8">
+                <a href="#" class="bg-gray-800 hover:bg-blue-600 p-3 rounded-full transition-colors">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </a>
+                <a href="#" class="bg-gray-800 hover:bg-pink-600 p-3 rounded-full transition-colors">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="bg-gray-800 hover:bg-blue-500 p-3 rounded-full transition-colors">
+                    <i class="fab fa-facebook text-xl"></i>
+                </a>
+                <a href="#" class="bg-gray-800 hover:bg-green-500 p-3 rounded-full transition-colors">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                </a>
+                <a href="#" class="bg-gray-800 hover:bg-red-500 p-3 rounded-full transition-colors">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+
+            <div class="text-center text-gray-400">
+                <p>&copy; {% now "Y" %} {% if profile %}{{ profile.nom_complet }}{% else %}Portfolio{% endif %}. Tous droits réservés.</p>
+=======
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Projets Récents</h2>
+            
+            <!-- Mobile scroll hint -->
+            <div class="flex items-center justify-center mb-6 text-gray-500 md:hidden">
+                <span class="text-sm">Faites défiler</span>
+                <i class="fas fa-arrow-right ml-2 animate-slide-right"></i>
+            </div>
+
+            <!-- Projects Slider -->
+            <div class="swiper projectsSwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    {% for projet in projects %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg hover-lift overflow-hidden h-full">
+                            <div class="relative">
+                                <img src="{{ projet.image.url }}" alt="{{ projet.titre }}" class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4">
+                                    <span class="{{ projet.status_color }} text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        {{ projet.get_statut_display }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3 text-gray-900">{{ projet.titre }}</h3>
+                                <p class="text-gray-600 mb-4">{{ projet.description_courte }}</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    {% for tech in projet.technologies %}
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                                <a href="{{ projet.get_absolute_url }}" class="inline-flex items-center text-pink-500 hover:text-pink-700 font-medium transition-colors">
+                                    Voir le projet <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                            <i class="fas fa-project-diagram text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucun projet à afficher pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination mt-8"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+>>>>>>> 988e720 (Initial commit)
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-16 bg-gray-50" id="skills">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+                <i class="fas fa-star text-pink-500 bounce-icon mr-3"></i>
+                Mes Compétences
+            </h2>
+            
+            <!-- Skills Carousel -->
+            <div class="skills-carousel-container relative">
+                <div class="swiper skillsSwiper">
+                    <div class="swiper-wrapper">
+                        {% for skill in skills %}
+                        <div class="swiper-slide">
+                            <div class="skill-card bg-white hover:bg-pink-50 border-2 border-pink-200 hover:border-pink-500 rounded-2xl p-6 text-center transition-all duration-300 hover-lift cursor-pointer h-full"
+                                 onclick="showSkillDetail('{{ skill.id }}', '{{ skill.nom_competence }}', '{{ skill.description|escapejs }}', '{{ skill.icone_class }}')">
+                                <i class="{{ skill.icone_class }} text-pink-500 text-4xl mb-4 block"></i>
+                                <h3 class="font-semibold text-gray-900 text-lg mb-2">{{ skill.nom_competence }}</h3>
+                                <p class="text-gray-600 text-sm">{{ skill.description|truncatewords:10 }}</p>
+                                <div class="mt-4">
+                                    <span class="text-pink-500 text-sm font-medium">Cliquez pour plus de détails</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="swiper-slide">
+                            <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                                <i class="fas fa-tools text-4xl text-gray-400 mb-4"></i>
+                                <p class="text-gray-600">Aucune compétence à afficher pour le moment.</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="swiper-pagination mt-8"></div>
+                    
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            
+            <!-- Modal pour les détails des compétences -->
+            <div id="skillModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-lg w-full p-6 transform transition-all duration-300 scale-95">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 id="skillModalTitle" class="text-2xl font-bold text-gray-900 dark:text-white"></h3>
+                        <button onclick="closeSkillModal()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <i id="skillModalIcon" class="text-pink-500 text-3xl mt-1"></i>
+                        <div>
+                            <p id="skillModalDescription" class="text-gray-600 dark:text-gray-300 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-16 bg-white" id="news">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Fil d'Actualités</h2>
+            
+            <!-- Mobile scroll hint -->
+            <div class="flex items-center justify-center mb-6 text-gray-500 md:hidden">
+                <span class="text-sm">Faites défiler</span>
+                <i class="fas fa-arrow-right ml-2 animate-slide-right"></i>
+            </div>
+
+            <!-- News Slider -->
+            <div class="swiper newsSwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    {% for actualite in news %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg hover-lift overflow-hidden border border-gray-100 h-full">
+                            <div class="relative">
+                                <img src="{{ actualite.image.url }}" alt="{{ actualite.titre }}" class="w-full h-48 object-cover">
+                                <div class="absolute top-4 right-4">
+                                    <span class="{{ actualite.plateforme_color }} text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                        {{ actualite.get_plateforme_display }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3 text-gray-900">{{ actualite.titre }}</h3>
+                                <p class="text-gray-600 mb-4">{{ actualite.description|truncatewords:20 }}</p>
+                                <a href="{{ actualite.lien_externe }}" target="_blank" class="inline-flex items-center {{ actualite.plateforme_color }} text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity w-full justify-center">
+                                    <i class="fab fa-{{ actualite.plateforme }} mr-2"></i>
+                                    Voir sur {{ actualite.get_plateforme_display }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                            <i class="fas fa-newspaper text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucune actualité à afficher pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination mt-8"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Gallery Section -->
+    <section class="py-16 bg-gray-50" id="galerie">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Galerie Sociale</h2>
+            
+            <!-- Mobile scroll hint -->
+            <div class="flex items-center justify-center mb-6 text-gray-500 md:hidden">
+                <span class="text-sm">Faites défiler</span>
+                <i class="fas fa-arrow-right ml-2 animate-slide-right"></i>
+            </div>
+
+            <!-- Gallery Slider -->
+            <div class="swiper gallerySwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    {% for item in gallery %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg hover-lift overflow-hidden h-full">
+                            <div class="relative">
+                                <img src="{{ item.image.url }}" alt="{{ item.titre }}" class="w-full h-48 object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3 text-gray-900">{{ item.titre }}</h3>
+                                <p class="text-gray-600 mb-4">{{ item.description_courte|truncatewords:15 }}</p>
+                                <a href="{{ item.get_absolute_url }}" class="inline-flex items-center text-pink-500 hover:text-pink-700 font-medium transition-colors">
+                                    Voir plus <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                            <i class="fas fa-images text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucun élément dans la galerie pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination mt-8"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feed Section -->
+    <section class="py-16 bg-white" id="feed">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Feed</h2>
+            
+            <!-- Mobile scroll hint -->
+            <div class="flex items-center justify-center mb-6 text-gray-500 md:hidden">
+                <span class="text-sm">Faites défiler</span>
+                <i class="fas fa-arrow-right ml-2 animate-slide-right"></i>
+            </div>
+
+            <!-- Feed Slider -->
+            <div class="swiper feedSwiper overflow-hidden">
+                <div class="swiper-wrapper">
+                    {% for item in feed %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg hover-lift overflow-hidden">
+                            <img src="{{ item.image.url }}" alt="{{ item.alt_text }}" class="w-full h-64 object-cover">
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                            <i class="fas fa-rss text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucun contenu dans le feed pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination mt-8"></div>
+                
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-16 bg-gray-50" id="partners">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Partenaires</h2>
+            
+            <!-- Partners Slider -->
+            <div class="swiper partnersSwiper overflow-hidden">
+                <div class="swiper-wrapper items-center">
+                    {% for partner in partners %}
+                    <div class="swiper-slide">
+                        <div class="text-center">
+                            {% if partner.url_site %}
+                            <a href="{{ partner.url_site }}" target="_blank" class="block">
+                            {% endif %}
+                                <img src="{{ partner.logo.url }}" 
+                                     alt="{{ partner.nom_partenaire }}" 
+                                     class="h-16 md:h-20 w-auto object-contain mx-auto grayscale hover:grayscale-0 transition-all duration-300">
+                            {% if partner.url_site %}
+                            </a>
+                            {% endif %}
+                            <p class="text-sm text-gray-600 mt-2">{{ partner.nom_partenaire }}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="swiper-slide">
+                        <div class="text-center py-8">
+                            <i class="fas fa-handshake text-4xl text-gray-400 mb-4"></i>
+                            <p class="text-gray-600">Aucun partenaire à afficher pour le moment.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Skills modal functionality
+    function showSkillDetail(skillId, title, description, iconClass) {
+        document.getElementById('skillModalTitle').textContent = title;
+        document.getElementById('skillModalDescription').textContent = description;
+        document.getElementById('skillModalIcon').className = iconClass + ' text-pink-500 text-3xl mt-1';
+        
+        const modal = document.getElementById('skillModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        // Animation d'ouverture
+        setTimeout(() => {
+            modal.querySelector('.transform').classList.remove('scale-95');
+            modal.querySelector('.transform').classList.add('scale-100');
+        }, 10);
+    }
+    
+    function closeSkillModal() {
+        const modal = document.getElementById('skillModal');
+        modal.querySelector('.transform').classList.remove('scale-100');
+        modal.querySelector('.transform').classList.add('scale-95');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }, 300);
+    }
+    
+    // Fermer le modal en cliquant en dehors
+    document.getElementById('skillModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeSkillModal();
+        }
+    });
+    
+    // Fermer le modal avec Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeSkillModal();
+        }
+    });
+
+    // Initialize Swiper sliders
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Skills Carousel - Affiche 2 compétences et glisse vers la droite
+        const skillsSwiper = new Swiper('.skillsSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                },
+            },
+        });
+        
+        // Projects Slider
+        const projectsSwiper = new Swiper('.projectsSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+<<<<<<< HEAD
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+=======
+        // News Slider
+        const newsSwiper = new Swiper('.newsSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        // Gallery Slider
+        const gallerySwiper = new Swiper('.gallerySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        // Feed Slider
+        const feedSwiper = new Swiper('.feedSwiper', {
+            slidesPerView: 2,
+            spaceBetween: 15,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        // Partners Slider
+        const partnersSwiper = new Swiper('.partnersSwiper', {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 50,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 60,
+                },
+            },
+        });
+
+        // Animation d'entrée au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer toutes les cartes
+        document.querySelectorAll('.skill-card, .hover-lift').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    });
+</script>
+{% endblock %}
+>>>>>>> 988e720 (Initial commit)

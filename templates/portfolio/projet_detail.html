@@ -1,0 +1,232 @@
+<!-- templates/portfolio/projet_detail.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ projet.titre }} | {{ profile.nom_complet }}{% endblock %}
+
+{% block description %}{{ projet.description_courte }}{% endblock %}
+
+{% block og_title %}{{ projet.titre }} | Portfolio{% endblock %}
+{% block og_description %}{{ projet.description_courte }}{% endblock %}
+{% block og_image %}{{ projet.image.url }}{% endblock %}
+
+{% block content %}
+    <!-- Breadcrumb -->
+    <nav class="bg-gray-100 dark:bg-gray-800 py-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <ol class="flex items-center space-x-2 text-sm">
+                <li><a href="{% url 'portfolio:index' %}" class="text-pink-500 hover:text-pink-700">Accueil</a></li>
+                <li><i class="fas fa-chevron-right text-gray-400 mx-2"></i></li>
+                <li><a href="{% url 'portfolio:index' %}#projets" class="text-pink-500 hover:text-pink-700">Projets</a></li>
+                <li><i class="fas fa-chevron-right text-gray-400 mx-2"></i></li>
+                <li class="text-gray-600 dark:text-gray-300">{{ projet.titre }}</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center animate-fade-in-up">
+                <div class="mb-4">
+                    <span class="{{ projet.status_color }} text-white px-4 py-2 rounded-full text-sm font-semibold">
+                        {{ projet.get_statut_display }}
+                    </span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">{{ projet.titre }}</h1>
+                <p class="text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
+                    {{ projet.description_courte }}
+                </p>
+                
+                <!-- Action buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                    {% if projet.url_demo %}
+                    <a href="{{ projet.url_demo }}" target="_blank" 
+                       class="bg-white text-pink-500 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                        <i class="fas fa-external-link-alt mr-2"></i>
+                        Voir la démo
+                    </a>
+                    {% endif %}
+                    
+                    {% if projet.url_github %}
+                    <a href="{{ projet.url_github }}" target="_blank" 
+                       class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-pink-500 transition-colors inline-flex items-center justify-center">
+                        <i class="fab fa-github mr-2"></i>
+                        Code source
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <!-- Project Image -->
+                    <div class="mb-8">
+                        <img src="{{ projet.image.url }}" alt="{{ projet.titre }}" 
+                             class="w-full h-96 object-cover rounded-2xl shadow-lg">
+                    </div>
+                    
+                    <!-- Project Description -->
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white">À propos du projet</h2>
+                        <div class="prose prose-lg max-w-none text-gray-600 dark:text-gray-300">
+                            {{ projet.description_detaillee|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <!-- Project Info -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Informations du projet</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Statut</span>
+                                <div class="mt-1">
+                                    <span class="{{ projet.status_color }} text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                        {{ projet.get_statut_display }}
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            {% if projet.technologies %}
+                            <div>
+                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Technologies utilisées</span>
+                                <div class="mt-2 flex flex-wrap gap-2">
+                                    {% for tech in projet.technologies %}
+                                    <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-3 py-1 rounded-full">
+                                        {{ tech }}
+                                    </span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            <div>
+                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Date de création</span>
+                                <p class="mt-1 text-gray-900 dark:text-white">{{ projet.created_at|date:"F Y" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Share Section -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-6">
+                        <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Partager ce projet</h3>
+                        <div class="flex space-x-3">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" 
+                               target="_blank"
+                               class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ projet.titre }}" 
+                               target="_blank"
+                               class="bg-blue-400 text-white p-3 rounded-lg hover:bg-blue-500 transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" 
+                               target="_blank"
+                               class="bg-blue-700 text-white p-3 rounded-lg hover:bg-blue-800 transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <button onclick="copyToClipboard('{{ request.build_absolute_uri }}')"
+                                    class="bg-gray-600 text-white p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Projects -->
+    {% if projets_similaires %}
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Projets similaires</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for projet_similaire in projets_similaires %}
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover-lift overflow-hidden">
+                    <div class="relative">
+                        <img src="{{ projet_similaire.image.url }}" alt="{{ projet_similaire.titre }}" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="{{ projet_similaire.status_color }} text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                {{ projet_similaire.get_statut_display }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">{{ projet_similaire.titre }}</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">{{ projet_similaire.description_courte|truncatewords:15 }}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            {% for tech in projet_similaire.technologies|slice:":3" %}
+                            <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <a href="{{ projet_similaire.get_absolute_url }}" class="inline-flex items-center text-pink-500 hover:text-pink-700 font-medium transition-colors">
+                            Voir le projet <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Back to projects -->
+    <section class="py-8 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <a href="{% url 'portfolio:index' %}#projets" 
+               class="inline-flex items-center bg-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-600 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Retour aux projets
+            </a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            showAlert('Lien copié dans le presse-papiers !', 'success');
+        }, function(err) {
+            showAlert('Erreur lors de la copie du lien', 'error');
+        });
+    }
+
+    // Animation d'entrée au scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observer les cartes de projets similaires
+    document.querySelectorAll('.hover-lift').forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+        observer.observe(card);
+    });
+</script>
+{% endblock %}
