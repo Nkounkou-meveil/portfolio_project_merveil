@@ -296,8 +296,9 @@ class SocialLinkAdmin(admin.ModelAdmin):
 
 @admin.register(ContactInfo)
 class ContactInfoAdmin(admin.ModelAdmin):
-    list_display = ['telephone', 'email', 'whatsapp', 'afficher_sidebar', 'updated_at']
+    list_display = ['telephone', 'email', 'whatsapp', 'cv_preview', 'afficher_sidebar', 'updated_at']
     list_editable = ['afficher_sidebar']
+    readonly_fields = ['cv_preview']
     
     fieldsets = (
         ('Contact principal', {
@@ -309,10 +310,23 @@ class ContactInfoAdmin(admin.ModelAdmin):
         ('Réseaux sociaux', {
             'fields': ('linkedin_url',)
         }),
+        ('CV', {
+            'fields': ('cv_file', 'cv_preview')
+        }),
         ('Affichage', {
             'fields': ('afficher_sidebar',)
         }),
     )
+    
+    def cv_preview(self, obj):
+        if obj.cv_file:
+            return format_html(
+                '<a href="{}" target="_blank" style="color: #007cba; text-decoration: none;">📄 Voir le CV</a> ({})',
+                obj.cv_file.url,
+                obj.cv_file.name.split('/')[-1]
+            )
+        return "Aucun CV uploadé"
+    cv_preview.short_description = "Aperçu du CV"
     
     def has_add_permission(self, request):
         # Permettre seulement un seul objet ContactInfo

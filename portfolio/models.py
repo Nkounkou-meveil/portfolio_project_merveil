@@ -391,6 +391,12 @@ class ContactInfo(models.Model):
         help_text="Numéro avec indicatif pays (ex: +242123456789)"
     )
     linkedin_url = models.URLField(blank=True, verbose_name="LinkedIn")
+    cv_file = models.FileField(
+        upload_to='cv/', 
+        blank=True, 
+        verbose_name="CV (PDF)",
+        help_text="Fichier PDF du CV à télécharger"
+    )
     afficher_sidebar = models.BooleanField(
         default=True, 
         verbose_name="Afficher la sidebar de contact"
