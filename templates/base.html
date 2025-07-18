@@ -893,19 +893,21 @@
             const toggleBtn = document.getElementById('sidebarToggle');
             
             if (sidebar && toggleBtn) {
-                let isVisible = window.innerWidth > 640; // Visible par défaut sur desktop
+                let isVisible = false; // Commencer avec false pour mobile ET desktop
                 
                 // Initialiser l'état du sidebar selon la taille d'écran
                 function initializeSidebar() {
                     if (window.innerWidth <= 640) {
                         // Mobile : masqué par défaut
                         sidebar.classList.remove('show-mobile');
+                        sidebar.classList.remove('hidden'); // S'assurer qu'on utilise la bonne classe
                         isVisible = false;
                         toggleBtn.innerHTML = '<i class="fas fa-phone"></i>';
                         toggleBtn.classList.remove('active');
                     } else {
                         // Desktop : visible par défaut
                         sidebar.classList.remove('hidden');
+                        sidebar.classList.remove('show-mobile'); // Nettoyer les classes mobile
                         isVisible = true;
                         toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
                         toggleBtn.classList.add('active');
@@ -914,30 +916,38 @@
                 
                 // Gérer le clic sur le bouton toggle
                 toggleBtn.addEventListener('click', function() {
+                    console.log('Toggle clicked, isVisible avant:', isVisible, 'Width:', window.innerWidth); // Debug
+                    
                     if (window.innerWidth <= 640) {
                         // Logique mobile
                         if (isVisible) {
                             sidebar.classList.remove('show-mobile');
                             toggleBtn.innerHTML = '<i class="fas fa-phone"></i>';
                             toggleBtn.classList.remove('active');
+                            isVisible = false;
+                            console.log('Mobile: Fermé'); // Debug
                         } else {
                             sidebar.classList.add('show-mobile');
                             toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
                             toggleBtn.classList.add('active');
+                            isVisible = true;
+                            console.log('Mobile: Ouvert'); // Debug
                         }
-                        isVisible = !isVisible;
                     } else {
                         // Logique desktop
                         if (isVisible) {
                             sidebar.classList.add('hidden');
                             toggleBtn.innerHTML = '<i class="fas fa-phone"></i>';
                             toggleBtn.classList.remove('active');
+                            isVisible = false;
+                            console.log('Desktop: Fermé'); // Debug
                         } else {
                             sidebar.classList.remove('hidden');
                             toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
                             toggleBtn.classList.add('active');
+                            isVisible = true;
+                            console.log('Desktop: Ouvert'); // Debug
                         }
-                        isVisible = !isVisible;
                     }
                 });
                 
@@ -957,6 +967,7 @@
                             toggleBtn.innerHTML = '<i class="fas fa-phone"></i>';
                             toggleBtn.classList.remove('active');
                             isVisible = false;
+                            console.log('Mobile: Fermé par clic extérieur'); // Debug
                         }
                     }
                 });
