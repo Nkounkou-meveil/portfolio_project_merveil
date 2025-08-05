@@ -12,7 +12,7 @@ SECRET_KEY = 'your-secret-key-here-change-this-in-production'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'portfolio-site-gacu.onrender.com', 'www.marlandniceme.com', 'marlandniceme.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'nkounkou-merveil.onrender.com']
 
 # Application definition
 INSTALLED_APPS = [
