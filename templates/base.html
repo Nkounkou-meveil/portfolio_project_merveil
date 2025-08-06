@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Marland Issangou | Portfolio{% endblock %}</title>
+    <title>{% block title %}Merveil Nkounkou | Portfolio{% endblock %}</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="{% block description %}Portfolio de Marland Nicème Issangou - Ingénieur en technologies digitales et entrepreneur du Congo-Brazzaville{% endblock %}">
+    <meta name="description" content="{% block description %}Portfolio de Merveil Nkounkou - Expert en technologies digitales{% endblock %}">
     <meta name="keywords" content="{% block keywords %}portfolio, développeur, entrepreneur, Congo-Brazzaville, technologies digitales{% endblock %}">
-    <meta name="author" content="Marland Nicème Issangou">
+    <meta name="author" content="Berly Merveil Bananga Nkounkou">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:title" content="{% block og_title %}Marland Issangou | Portfolio{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Portfolio de Marland Nicème Issangou{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Merveil Nkounkou | Portfolio{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Portfolio de Berly Merveil Bananga Nkounkou{% endblock %}">
     <meta property="og:image" content="{% block og_image %}{% load static %}{% static 'img/og-image.jpg' %}{% endblock %}">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
-    <meta property="twitter:title" content="{% block twitter_title %}Marland Issangou | Portfolio{% endblock %}">
-    <meta property="twitter:description" content="{% block twitter_description %}Portfolio de Marland Nicème Issangou{% endblock %}">
+    <meta property="twitter:title" content="{% block twitter_title %}Merveil Nkounkou | Portfolio{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Portfolio de Berly Merveil Bananga Nkounkou{% endblock %}">
     <meta property="twitter:image" content="{% block twitter_image %}{% load static %}{% static 'img/twitter-image.jpg' %}{% endblock %}">
     
    <!-- Favicon -->
@@ -737,7 +737,8 @@
     <!-- Theme Toggle Script -->
     <script>
         // Variables pour le stockage en mémoire (remplace localStorage)
-        let currentTheme = 'light';
+        // let currentTheme = 'light';
+        let currentTheme = localStorage.getItem('dark') || 'light';
 
         // Éléments DOM
         const themeToggle = document.getElementById('themeToggle');

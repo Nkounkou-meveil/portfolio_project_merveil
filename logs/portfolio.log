@@ -447,3 +447,6 @@ WARNING 2025-07-05 11:19:33,930 log 13198 6206582784 Not Found: /.well-known/app
 WARNING 2025-07-05 11:19:46,358 log 13198 6189756416 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-05 11:22:22,708 log 13198 6156103680 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-05 11:22:41,503 log 13198 6172930048 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-06 10:31:30,983 autoreload 1317 8764366592 Watching for file changes with StatReloader
+WARNING 2025-08-06 10:45:17,427 log 1317 6274445312 Not Found: /favicon.ico
+WARNING 2025-08-06 11:59:44,774 log 1317 6207139840 Not Found: /media/White Modern Simple Photo Zoom Virtual Background (3).png
